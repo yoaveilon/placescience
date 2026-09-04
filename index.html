@@ -181,8 +181,20 @@
   }
   @keyframes heroDrift1{ from{ transform:translate(0,0) scale(1); } to{ transform:translate(-8%,6%) scale(1.15); } }
   @keyframes heroDrift2{ from{ transform:translate(0,0) scale(1); } to{ transform:translate(7%,-7%) scale(1.14); } }
+  /* Text entrance — each hero-inner child fades up on load, staggered
+     so the heading leads and the buttons settle in last. */
+  .hero-inner > *{
+    opacity:0; transform:translateY(16px);
+    animation:heroTextIn 0.8s cubic-bezier(.22,.61,.36,1) forwards;
+  }
+  .hero-inner > h1{ animation-delay:0.05s; }
+  .hero-inner > .hero-loc{ animation-delay:0.22s; }
+  .hero-inner > .hero-tag{ animation-delay:0.34s; }
+  .hero-inner > .hero-actions{ animation-delay:0.46s; }
+  @keyframes heroTextIn{ to{ opacity:1; transform:translateY(0); } }
   @media (prefers-reduced-motion:reduce){
     .hero-ambient::before, .hero-ambient::after{ animation:none; }
+    .hero-inner > *{ opacity:1; transform:none; animation:none; }
   }
   @media (prefers-reduced-motion:reduce){ .hero-bg-slide{ transition:none; } }
   .hero h1{
