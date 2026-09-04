@@ -164,18 +164,23 @@
      life without the visual weight of photography. Opacity is kept
      low enough that text contrast is unaffected. */
   .hero-ambient{ position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
+  /* Sized/positioned in vmax (not vw/%) so the blobs stay generously
+     oversized and stay put on tall narrow screens too — a vw-based
+     size collapsed to a sliver, and a %-based offset (relative to
+     the hero's own height) shoved it off-screen, on mobile's tall,
+     narrow hero. */
   .hero-ambient::before,
   .hero-ambient::after{
     content:""; position:absolute; border-radius:50%;
-    width:55vw; height:55vw; filter:blur(60px);
+    width:70vmax; height:70vmax; filter:blur(60px);
   }
   .hero-ambient::before{
-    top:-18%; inset-inline-end:-12%;
+    top:-20vmax; inset-inline-end:-20vmax;
     background:radial-gradient(circle, rgba(20,20,19,0.14), transparent 70%);
     animation:heroDrift1 16s ease-in-out infinite alternate;
   }
   .hero-ambient::after{
-    bottom:-22%; inset-inline-start:-14%;
+    bottom:-22vmax; inset-inline-start:-22vmax;
     background:radial-gradient(circle, rgba(20,20,19,0.12), transparent 70%);
     animation:heroDrift2 20s ease-in-out infinite alternate;
   }
