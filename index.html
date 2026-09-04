@@ -167,20 +167,20 @@
   .hero-ambient::before,
   .hero-ambient::after{
     content:""; position:absolute; border-radius:50%;
-    width:55vw; height:55vw; filter:blur(70px);
+    width:55vw; height:55vw; filter:blur(60px);
   }
   .hero-ambient::before{
     top:-18%; inset-inline-end:-12%;
-    background:radial-gradient(circle, rgba(20,20,19,0.06), transparent 70%);
-    animation:heroDrift1 34s ease-in-out infinite alternate;
+    background:radial-gradient(circle, rgba(20,20,19,0.14), transparent 70%);
+    animation:heroDrift1 16s ease-in-out infinite alternate;
   }
   .hero-ambient::after{
     bottom:-22%; inset-inline-start:-14%;
-    background:radial-gradient(circle, rgba(20,20,19,0.05), transparent 70%);
-    animation:heroDrift2 40s ease-in-out infinite alternate;
+    background:radial-gradient(circle, rgba(20,20,19,0.12), transparent 70%);
+    animation:heroDrift2 20s ease-in-out infinite alternate;
   }
-  @keyframes heroDrift1{ from{ transform:translate(0,0) scale(1); } to{ transform:translate(-5%,4%) scale(1.08); } }
-  @keyframes heroDrift2{ from{ transform:translate(0,0) scale(1); } to{ transform:translate(4%,-5%) scale(1.06); } }
+  @keyframes heroDrift1{ from{ transform:translate(0,0) scale(1); } to{ transform:translate(-8%,6%) scale(1.15); } }
+  @keyframes heroDrift2{ from{ transform:translate(0,0) scale(1); } to{ transform:translate(7%,-7%) scale(1.14); } }
   @media (prefers-reduced-motion:reduce){
     .hero-ambient::before, .hero-ambient::after{ animation:none; }
   }
