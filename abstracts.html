@@ -298,7 +298,7 @@
     position: sticky; top: 0; z-index: 5;
     background: var(--bg); border-bottom: 1px solid var(--line);
     margin-inline: calc(-1 * clamp(20px, 4vw, 24px)); padding: 10px clamp(20px, 4vw, 24px) 12px;
-    margin-bottom: 22px;
+    margin-top: clamp(20px, 3vw, 32px); margin-bottom: 22px;      /* breathing room under the banner */
   }
   .abs-bar.is-hidden { transform: translateY(-101%); }
   @media (prefers-reduced-motion: no-preference) { .abs-bar { transition: transform .22s ease; } }
@@ -309,7 +309,7 @@
     padding: 9px 12px; cursor: pointer; background: transparent; border: 0; border-radius: 999px;
   }
   .abs-tab .n { font-size: 0.82rem; font-weight: 500; opacity: 0.6; font-variant-numeric: tabular-nums; }
-  .abs-tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+  .abs-tab[aria-selected="true"] { background: #1848B4; color: #fff; }          /* cobalt from the design kit */
 
   .inst-nav { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .inst-nav::-webkit-scrollbar { display: none; }
@@ -321,7 +321,7 @@
     background: transparent; border: 1px solid var(--line); border-radius: 999px;
   }
   .inst-btn:hover { background: var(--bg-panel); }
-  .inst-btn[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); font-weight: 600; }
+  .inst-btn[aria-pressed="true"] { background: #1848B4; border-color: #1848B4; color: #fff; font-weight: 600; }
   .inst-btn .n { font-size: 0.8rem; font-weight: 500; opacity: 0.6; font-variant-numeric: tabular-nums; }
   @media (min-width: 900px) {
     .abs-bar { position: static; transform: none !important; }
