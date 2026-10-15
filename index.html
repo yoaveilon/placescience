@@ -321,6 +321,20 @@
      AGENDA
   --------------------------------------------------------- */
   .split-label p.agenda-note{ margin:10px 0 29px; color:var(--ink-60); font-size:1.25rem; line-height:1.4; }
+  /* Toggle UI restored as a visual element for now — what the two
+     states actually switch between is still to be decided. */
+  .day-toggle{
+    display:inline-flex; gap:0;
+    background:color-mix(in srgb, var(--ink) 8%, var(--bg));
+    padding:8px; border-radius:999px;
+    margin-bottom:8px;
+  }
+  .day-toggle button{
+    font-family:var(--font-heebo); font-size:1rem;
+    padding:8px 20px; border-radius:999px; border:none;
+    background:transparent; color:var(--ink-60); cursor:pointer;
+  }
+  .day-toggle button[aria-selected="true"]{ background:var(--bg); color:var(--ink); }
   /* Day heading + first row: the source page separates these by a
      fixed ~46px gap, not a token shared with anything else on the
      page, so it's set directly rather than reused from another rule. */
@@ -345,6 +359,8 @@
     margin-bottom:4px; font-family:var(--font-heebo); font-weight:500;
     font-size:0.82rem; letter-spacing:0.02em; color:var(--ink-40);
   }
+  .agenda-panel{ display:none; }
+  .agenda-panel.active{ display:block; }
   /* Generic per-talk breakdown nested under a session row — a nested,
      smaller repeat of the time+title pattern above, since a session
      is itself a small agenda. Fill in real titles/speakers per slot
@@ -532,11 +548,15 @@
   <div class="split-label">
     <h2>סדר יום</h2>
     <p class="agenda-note">סדר היום המלא יישלח למשתתפים הרשומים.</p>
+    <div class="day-toggle" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-panel="schedule">לו״ז</button>
+      <button type="button" role="tab" aria-selected="false" data-panel="lectures">הרצאות</button>
+    </div>
   </div>
   <div>
     <div class="agenda-heading">12 בנובמבר 2026</div>
 
-    <div>
+    <div class="agenda-panel active" data-panel="schedule">
       <div class="agenda-list">
         <div class="agenda-row"><div class="agenda-time">9:30–10:15</div><div>
           <div class="agenda-title">התכנסות וברכות</div>
@@ -557,12 +577,6 @@
         <div class="agenda-row"><div class="agenda-time">11:00–12:30</div><div>
           <div class="agenda-title">מושב ראשון: מדע מבוסס מקום</div>
           <div class="agenda-people"><div>יו״ר: ד״ר אלי גרונר</div></div>
-          <div class="session-talks">
-            <div class="talk"><div class="talk-time">11:00–11:20</div><div class="talk-title">ד״ר טובלה סלומון<span class="talk-sub">מו״פ מדבר וים המלח</span></div></div>
-            <div class="talk"><div class="talk-time">11:20–11:40</div><div class="talk-title">ד״ר דני גמרסני<span class="talk-sub">מיגל</span></div></div>
-            <div class="talk"><div class="talk-time">11:40–12:00</div><div class="talk-title">פרופ׳ שיבי דרורי<span class="talk-sub">מו״פ מזרח יו״ש ובקעת הירדן</span></div></div>
-            <div class="talk"><div class="talk-time">12:00–12:20</div><div class="talk-title">פרופ׳ משה שגיא<span class="talk-sub">מו״פ עוטף עזה</span></div></div>
-          </div>
         </div></div>
         <div class="agenda-row"><div class="agenda-time">12:30–13:20</div><div class="agenda-title">ארוחת צהריים ותערוכת פוסטרים</div></div>
         <div class="agenda-row"><div class="agenda-time">13:20–14:20</div><div>
@@ -576,6 +590,26 @@
         <div class="agenda-row"><div class="agenda-time">14:20–15:40</div><div>
           <div class="agenda-title">מושב שני: מדע פורץ דרך</div>
           <div class="agenda-people"><div>יו״ר: פרופ׳ עבד אלפתאח נאסר</div></div>
+        </div></div>
+        <div class="agenda-row"><div class="agenda-time">15:40–16:00</div><div class="agenda-title">סיכום והכרזה על פוסטרים זוכים</div></div>
+      </div>
+    </div>
+
+    <div class="agenda-panel" data-panel="lectures">
+      <div class="agenda-list">
+        <div class="agenda-row"><div class="agenda-time">11:00–12:30</div><div>
+          <div class="agenda-title">מושב ראשון: מדע מבוסס מקום</div>
+          <div class="agenda-people"><div>יו״ר: ד״ר אלי גרונר</div></div>
+          <div class="session-talks">
+            <div class="talk"><div class="talk-time">11:00–11:20</div><div class="talk-title">ד״ר טובלה סלומון<span class="talk-sub">מו״פ מדבר וים המלח</span></div></div>
+            <div class="talk"><div class="talk-time">11:20–11:40</div><div class="talk-title">ד״ר דני גמרסני<span class="talk-sub">מיגל</span></div></div>
+            <div class="talk"><div class="talk-time">11:40–12:00</div><div class="talk-title">פרופ׳ שיבי דרורי<span class="talk-sub">מו״פ מזרח יו״ש ובקעת הירדן</span></div></div>
+            <div class="talk"><div class="talk-time">12:00–12:20</div><div class="talk-title">פרופ׳ משה שגיא<span class="talk-sub">מו״פ עוטף עזה</span></div></div>
+          </div>
+        </div></div>
+        <div class="agenda-row"><div class="agenda-time">14:20–15:40</div><div>
+          <div class="agenda-title">מושב שני: מדע פורץ דרך</div>
+          <div class="agenda-people"><div>יו״ר: פרופ׳ עבד אלפתאח נאסר</div></div>
           <div class="session-talks">
             <div class="talk"><div class="talk-time">14:20–14:40</div><div class="talk-title">ד״ר נורית אילאש<span class="talk-sub">מכון שמיר למחקר</span></div></div>
             <div class="talk"><div class="talk-time">14:40–15:00</div><div class="talk-title">ד״ר דורית אבני<span class="talk-sub">מיגל</span></div></div>
@@ -583,7 +617,6 @@
             <div class="talk"><div class="talk-time">15:20–15:40</div><div class="talk-title">ד״ר האני ברהום<span class="talk-sub">מו״פ המשולש</span></div></div>
           </div>
         </div></div>
-        <div class="agenda-row"><div class="agenda-time">15:40–16:00</div><div class="agenda-title">סיכום והכרזה על פוסטרים זוכים</div></div>
       </div>
     </div>
   </div>
@@ -653,6 +686,19 @@
       slides[slideIdx].classList.add('active');
     }, 5000);
   }
+})();
+(function(){
+  // "לו״ז" shows the day's top-level schedule; "הרצאות" shows the
+  // per-talk breakdown of the two sessions.
+  var tabs = document.querySelectorAll('.day-toggle button');
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabs.forEach(function(b){ b.setAttribute('aria-selected','false'); });
+      btn.setAttribute('aria-selected','true');
+      document.querySelectorAll('.agenda-panel').forEach(function(p){ p.classList.remove('active'); });
+      document.querySelector('.agenda-panel[data-panel="' + btn.dataset.panel + '"]').classList.add('active');
+    });
+  });
 })();
 </script>
 
