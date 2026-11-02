@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<script>window.onerror=function(m,u,l){var d=document.createElement("div");d.style.cssText="position:fixed;left:0;right:0;bottom:0;z-index:99;background:#b00;color:#fff;font:12px/1.3 monospace;padding:6px;direction:ltr";d.textContent="JS error: "+m+" @"+l;(document.body||document.documentElement).appendChild(d)}</script>
 <title>כנס המו״פים האזוריים – מצגת רקע</title>
 <style>
 @font-face{font-family:"NSH";font-weight:400;src:url(assets/nsh-400.woff2) format("woff2");font-display:swap}
@@ -19,20 +20,21 @@
 #stage[data-theme="pale"]{--bg:#EEF3F8;--ink:#223569;--accent:#2F4F9D;--line:#2F4F9D;--hl:#1FA58F;--logo:none;--title:#000}
 #stage[data-theme="sand"]{--bg:#E9D8BB;--ink:#223569;--accent:#8C4A2B;--line:#fff;--hl:#C4552D;--logo:none;--title:#000}
 *{box-sizing:border-box;margin:0}
-html,body{height:100%;background:#0d1b3d;overflow:hidden;font-family:"NSH","Noto Sans Hebrew",Arial,sans-serif}
+html,body{position:fixed;left:0;top:0;width:100%;height:100%;background:#0d1b3d;overflow:hidden;overscroll-behavior:none;touch-action:manipulation;-webkit-text-size-adjust:100%;font-family:"NSH","Noto Sans Hebrew",Arial,sans-serif}
 #stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;background:var(--bg);overflow:hidden;transform-origin:center;color:var(--ink);transition:color 1.2s}
 /* photos: cross-fade between slides, slow push-in, faded into the mint upwards */
-.photo{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;
+.photo{position:absolute;top:0;left:0;right:0;bottom:0;opacity:0;transition:opacity 1.4s ease;
   -webkit-mask-image:linear-gradient(to top,#000 0,#000 3%,transparent var(--ft,55%));mask-image:linear-gradient(to top,#000 0,#000 3%,transparent var(--ft,55%))}
 .photo.on{opacity:1}
 .photo:not(.on):not(.near){display:none}
+#ld{position:fixed;left:0;right:0;top:45%;text-align:center;color:rgba(255,255,255,.7);font-size:18px;pointer-events:none;z-index:5}
 #rot{display:none;position:fixed;left:0;right:0;top:14px;text-align:center;color:rgba(255,255,255,.55);font-size:14px;pointer-events:none}
 @media (orientation:portrait){#rot{display:block}}
 .photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 30s linear}
 .photo.on img{transform:scale(1.13)}
 /* contour map: pans between slides, fades upwards, breathes slowly */
 #map{position:absolute;left:0;top:0;width:2496px;height:1838px;transition:transform 2s cubic-bezier(.5,0,.2,1);will-change:transform}
-#mapwrap{position:absolute;inset:0;
+#mapwrap{position:absolute;top:0;left:0;right:0;bottom:0;
   -webkit-mask-image:linear-gradient(to top,#000 0,#000 35%,rgba(0,0,0,.3) 100%);mask-image:linear-gradient(to top,#000 0,#000 35%,rgba(0,0,0,.6) 100%)}
 .lines{fill:none;stroke:var(--line);transition:stroke 1.2s;stroke-width:2.4;stroke-linejoin:round;animation:breathe 9s ease-in-out infinite}
 @keyframes breathe{0%,100%{stroke-opacity:.13}50%{stroke-opacity:.17}}
@@ -56,7 +58,7 @@ html,body{height:100%;background:#0d1b3d;overflow:hidden;font-family:"NSH","Noto
 #stage[data-theme="blue"] .photo.on{opacity:.38}
 #stage[data-theme="blue"] #mapwrap{-webkit-mask-image:none;mask-image:none}
 /* slides + text */
-.slide{position:absolute;inset:0;pointer-events:none}
+.slide{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none}
 .slide .t{position:absolute;right:87px;text-align:right;opacity:0;transform:translateY(26px)}
 .slide.on .t{animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*.12s + .5s)}
 @keyframes rise{to{opacity:1;transform:none}}
@@ -222,6 +224,7 @@ html,body{height:100%;background:#0d1b3d;overflow:hidden;font-family:"NSH","Noto
     <div class="t stack" style="--i:1"><div class="mega">תודה רבה</div></div>
   </section>
 </div>
+<div id="ld">טוען…</div>
 <div id="rot">מומלץ לסובב את המכשיר לרוחב</div>
 <div id="hint">← / → מעבר · F מסך מלא · A ניגון אוטומטי · C החלפת גרדיאנט/צבע</div>
 <script>
@@ -233,7 +236,7 @@ const cam=[[440, 90], [477, 143], [514, 106], [551, 159], [468, 122], [505, 175]
 const times=["12.11.2026", "9:30–10:30", "9:30–10:30", "9:30–10:30", "9:30–10:30", "9:30–10:30", "10:30–11:00", "11:00–12:30", "11:00–12:30", "11:00–12:30", "11:00–12:30", "11:00–12:30", "12:30–13:20", "13:20–14:20", "14:20–15:40", "14:20–15:40", "14:20–15:40", "14:20–15:40", "14:20–15:40", "15:40–16:30"];
 let cur=-1,auto=null;
 function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
-addEventListener('resize',fit);fit();
+addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeout(fit,250));fit();
 function go(n){
   n=(n+slides.length)%slides.length; if(n===cur)return;
   slides.forEach((s,i)=>s.classList.toggle('on',i===n));
@@ -265,5 +268,6 @@ setTimeout(()=>document.getElementById('hint').style.opacity=0,9000);
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.style.setProperty('--rm','1');
 addEventListener('load',()=>{const L=["assets/bees.jpg", "assets/hula.jpg", "assets/desert.jpg", "assets/galhills.jpg", "assets/dead.jpg", "assets/haifa.jpg", "assets/kinneret.jpg", "assets/fields.jpg"];let i=0;(function nx(){if(i<L.length){const im=new Image();im.onload=im.onerror=()=>setTimeout(nx,150);im.src=L[i++]}})()});
 go(0);
+document.getElementById('ld').style.display='none';
 </script>
 </body></html>
