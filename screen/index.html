@@ -268,7 +268,7 @@ function go(n){
   hl.classList.add('draw');hl2.forEach(p=>p.classList.add('draw'));
   cur=n;
 }
-const themes=['navy','teal','green','mint','blue','cobalt','pale','sand'];let ti=0;
+const themes=['navy','cobalt'];let ti=0;
 const q=new URLSearchParams(location.search).get('theme');if(q&&themes.includes(q)){ti=themes.indexOf(q);stage.dataset.theme=q}
 function theme(){ti=(ti+1)%themes.length;stage.dataset.theme=themes[ti];const h=document.getElementById('hint');h.textContent=themes[ti];h.style.opacity=.9;setTimeout(()=>h.style.opacity=0,1800)}
 const next=()=>go(cur+1),prev=()=>go(cur-1);
