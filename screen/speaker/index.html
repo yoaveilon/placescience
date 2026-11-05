@@ -9,16 +9,16 @@
 @font-face{font-family:"TAM";font-weight:400;src:url(../assets/tam-400.woff) format("woff");font-display:block;unicode-range:U+0020-0040,U+00A0-00BF,U+0590-05FF,U+2000-206F,U+20AA,U+FB1D-FB4F}
 @font-face{font-family:"TAM";font-weight:700;src:url(../assets/tam-700.woff) format("woff");font-display:block;unicode-range:U+0020-0040,U+00A0-00BF,U+0590-05FF,U+2000-206F,U+20AA,U+FB1D-FB4F}
 *{box-sizing:border-box;margin:0}
-html,body{position:fixed;inset:0;background:#00379E;overflow:hidden;font-family:"TAM","Noto Sans Hebrew",Arial,sans-serif}
-#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:#014BCF;color:#fff;overflow:hidden;letter-spacing:-0.045em;font-weight:400}
+html,body{position:fixed;inset:0;background:#264C8C;overflow:hidden;font-family:"TAM","Noto Sans Hebrew",Arial,sans-serif}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:#3261AE;color:#fff;overflow:hidden;letter-spacing:-0.045em;font-weight:400}
 /* darkening towards the photo, as in the original slide */
-#stage .sky{position:absolute;inset:0;background:linear-gradient(to bottom,#014BCF 0,#014BCF 28%,#0049BB 46%,#0049B0 58%)}
+#stage .sky{position:absolute;inset:0;background:linear-gradient(to bottom,#3261AE 0,#3261AE 28%,#305FAA 46%,#2D5AA0 58%)}
 .pw{position:absolute;inset:0;opacity:0;transform-origin:50% 60%;animation:phin 1.4s ease forwards,push 30s linear forwards}
 @keyframes phin{to{opacity:1}}
 @keyframes push{from{transform:scale(1)}to{transform:scale(1.087)}}
 .photo{position:absolute;left:-225px;top:288px;width:2610px;height:1740px;object-fit:cover;
   -webkit-mask-image:linear-gradient(to bottom,transparent 0,transparent 6%,#000 34%);mask-image:linear-gradient(to bottom,transparent 0,transparent 6%,#000 34%)}
-.tint{position:absolute;left:0;right:0;top:380px;bottom:0;background:linear-gradient(to bottom,rgba(1,75,207,0) 0,rgba(1,75,207,.6) 22%,rgba(1,75,207,.68) 40%,rgba(1,75,207,.46) 58%,rgba(1,75,207,.16) 80%,rgba(1,75,207,0) 100%)}
+.tint{position:absolute;left:0;right:0;top:380px;bottom:0;background:linear-gradient(to bottom,rgba(50,97,174,0) 0,rgba(50,97,174,.6) 22%,rgba(50,97,174,.68) 40%,rgba(50,97,174,.46) 58%,rgba(50,97,174,.16) 80%,rgba(50,97,174,0) 100%)}
 .lines{position:absolute;inset:0;width:100%;height:100%}
 .lines path.base{fill:none;stroke:#fff;stroke-opacity:.3;stroke-width:1.5;vector-effect:non-scaling-stroke;animation:breathe 9s ease-in-out infinite}
 @keyframes breathe{0%,100%{stroke-opacity:.27}50%{stroke-opacity:.35}}
