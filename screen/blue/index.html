@@ -158,7 +158,7 @@ html[data-lite="3"] .photo{display:none!important}
   </section>
   <section class="slide" data-s="5">
     <div class="t topbar" style="--i:0"><span class="tm">10:30-11:00</span><span class="cp">הרצאת מליאה</span></div>
-    <div class="t blk tk bd" style="--i:1"><div class="ttl">מציאות מדומה ככלי מחקר לקבלת החלטות</div>
+    <div class="t blk tk bd" style="--i:1"><div class="ttl" data-fs=96>מציאות מדומה ככלי מחקר לקבלת החלטות</div>
     <div class="sub">פרופ׳ תום שינברג, אוניברסיטת תל אביב</div></div>
   </section>
   <section class="slide" data-s="6">
@@ -249,7 +249,7 @@ let cur=-1,auto=null;
 function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
 addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeout(fit,250));fit();
 // long talk titles: shrink until the title block fits above the bottom margin (width is fixed by the logo's right edge)
-function fitTitles(){document.querySelectorAll('.one').forEach(t=>{let fs=53;t.style.fontSize=fs+'px';while(t.scrollWidth>t.parentNode.clientWidth&&fs>30){fs-=1;t.style.fontSize=fs+'px'}});document.querySelectorAll('.ttl').forEach(t=>{let fs=80;t.style.fontSize=fs+'px';while(t.offsetHeight>420&&fs>44){fs-=2;t.style.fontSize=fs+'px'}})}
+function fitTitles(){document.querySelectorAll('.one').forEach(t=>{let fs=53;t.style.fontSize=fs+'px';while(t.scrollWidth>t.parentNode.clientWidth&&fs>30){fs-=1;t.style.fontSize=fs+'px'}});document.querySelectorAll('.ttl').forEach(t=>{let fs=+t.dataset.fs||80;t.style.fontSize=fs+'px';while(t.offsetHeight>420&&fs>44){fs-=2;t.style.fontSize=fs+'px'}})}
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitTitles);fitTitles();addEventListener('load',fitTitles);
 function go(n){
   n=(n+slides.length)%slides.length; if(n===cur)return;
