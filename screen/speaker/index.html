@@ -32,6 +32,8 @@ html,body{position:fixed;inset:0;background:#264C8C;overflow:hidden;font-family:
 @media (prefers-reduced-motion:reduce){.pw,.t{animation:none;opacity:1;transform:none}.lines path.base,.lines g.dr{animation:none}.hl,.hl2{display:none}}
 .logo{position:absolute;left:69px;top:65px;width:302px;clip-path:polygon(0 0,100% 0,100% 100%,73.4% 100%,73.4% 69.3%,0 69.3%);filter:brightness(0) invert(1)}
 .t{position:absolute;white-space:nowrap}
+.tm,.cp,.inst{filter:url(#thin)}
+.name{filter:url(#thinL)}
 .tm{right:115px;top:87px;font-size:47px;line-height:1;direction:ltr;letter-spacing:-0.04em}
 .cp{right:458px;top:88px;font-size:46px;line-height:1;letter-spacing:-0.027em}
 .name{right:118px;top:451px;font-size:127px;line-height:1.08;letter-spacing:-0.045em}
@@ -39,6 +41,7 @@ html,body{position:fixed;inset:0;background:#264C8C;overflow:hidden;font-family:
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="thin" x="-3%" y="-10%" width="106%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="1"/><feComponentTransfer><feFuncA type="linear" slope="3" intercept="-1.57"/></feComponentTransfer></filter><filter id="thinL" x="-3%" y="-10%" width="106%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="1"/><feComponentTransfer><feFuncA type="linear" slope="3" intercept="-1.3"/></feComponentTransfer></filter></svg>
 <div id="stage">
   <div class="sky"></div>
   <div class="pw"><img class="photo" src="../assets/dead.jpg" alt=""></div>
