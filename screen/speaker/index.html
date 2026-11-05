@@ -10,7 +10,7 @@
 @font-face{font-family:"TAM";font-weight:700;src:url(../assets/tam-700.woff) format("woff");font-display:block;unicode-range:U+0020-0040,U+00A0-00BF,U+0590-05FF,U+2000-206F,U+20AA,U+FB1D-FB4F}
 *{box-sizing:border-box;margin:0}
 html,body{position:fixed;inset:0;background:#264C8C;overflow:hidden;font-family:"TAM","Noto Sans Hebrew",Arial,sans-serif}
-#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:#3261AE;color:#fff;overflow:hidden;letter-spacing:-0.045em;font-weight:400}
+#stage{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:#3261AE;color:#fff;overflow:hidden;letter-spacing:-0.045em;font-weight:400}
 /* darkening towards the photo, as in the original slide */
 #stage .sky{position:absolute;inset:0;background:linear-gradient(to bottom,#3261AE 0,#3261AE 28%,#305FAA 46%,#2D5AA0 58%)}
 .pw{position:absolute;inset:0;opacity:0;transform-origin:50% 60%;animation:phin 1.4s ease forwards,push 30s linear forwards}
