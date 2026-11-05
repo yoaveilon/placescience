@@ -30,7 +30,7 @@ html,body{position:fixed;inset:0;background:#264C8C;overflow:hidden;font-family:
 .t{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*.12s + .5s)}
 @keyframes rise{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.pw,.t{animation:none;opacity:1;transform:none}.lines path.base,.lines g.dr{animation:none}.hl,.hl2{display:none}}
-.logo{position:absolute;left:69px;top:65px;width:302px;clip-path:inset(0 0 29% 0);filter:brightness(0) invert(1)}
+.logo{position:absolute;left:69px;top:65px;width:302px;clip-path:polygon(0 0,100% 0,100% 100%,73.4% 100%,73.4% 69.3%,0 69.3%);filter:brightness(0) invert(1)}
 .t{position:absolute;white-space:nowrap}
 .tm{right:115px;top:87px;font-size:47px;line-height:1;direction:ltr;letter-spacing:-0.04em}
 .cp{right:458px;top:88px;font-size:46px;line-height:1;letter-spacing:-0.027em}
