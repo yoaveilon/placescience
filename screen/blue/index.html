@@ -79,6 +79,7 @@ html[data-lite="3"] .photo{display:none!important}
 .blk.ti{top:424px}
 .inst,.chair{font-size:53px;line-height:1.1;letter-spacing:-0.037em;margin-top:2px}
 .inst{margin-top:19px}
+.one{white-space:nowrap}
 .ti .chair{margin-top:30px}
 .row{display:flex;flex-direction:row;gap:48px;width:1560px;margin-top:90px;letter-spacing:-0.03em}
 .row{justify-content:space-between}
@@ -189,7 +190,7 @@ html[data-lite="3"] .photo{display:none!important}
   <section class="slide" data-s="11">
     <div class="t topbar" style="--i:0"><span class="tm">12:30-13:20</span><span class="cp">הפסקה</span></div>
     <div class="t blk nm" style="--i:1"><div class="mega">הפסקת צוהריים</div>
-    <div class="inst">מוזמנים לעבור בתערוכת הפוסטרים ברחבת גליל (מחוץ לדלת הכניסה)</div></div>
+    <div class="inst one">מוזמנים לעבור בתערוכת הפוסטרים ברחבת גליל (מחוץ לדלת הכניסה)</div></div>
   </section>
   <section class="slide" data-s="12">
     <div class="t topbar" style="--i:0"><span class="tm">13:20-14:20</span><span class="cp">מושב שני</span></div>
@@ -245,7 +246,7 @@ let cur=-1,auto=null;
 function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
 addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeout(fit,250));fit();
 // long talk titles: shrink until the title block fits above the bottom margin (width is fixed by the logo's right edge)
-function fitTitles(){document.querySelectorAll('.ttl').forEach(t=>{let fs=80;t.style.fontSize=fs+'px';while(t.offsetHeight>420&&fs>44){fs-=2;t.style.fontSize=fs+'px'}})}
+function fitTitles(){document.querySelectorAll('.one').forEach(t=>{let fs=53;t.style.fontSize=fs+'px';while(t.scrollWidth>t.parentNode.clientWidth&&fs>30){fs-=1;t.style.fontSize=fs+'px'}});document.querySelectorAll('.ttl').forEach(t=>{let fs=80;t.style.fontSize=fs+'px';while(t.offsetHeight>420&&fs>44){fs-=2;t.style.fontSize=fs+'px'}})}
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitTitles);fitTitles();addEventListener('load',fitTitles);
 function go(n){
   n=(n+slides.length)%slides.length; if(n===cur)return;
