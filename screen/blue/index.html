@@ -23,9 +23,9 @@ document.documentElement.setAttribute('data-lite',lvl)})();
 @font-face{font-family:"NSH";font-weight:400;src:url(../assets/nsh-400.woff2) format("woff2");font-display:swap}
 @font-face{font-family:"NSH";font-weight:700;src:url(../assets/nsh-700.woff2) format("woff2");font-display:swap}
 *{box-sizing:border-box;margin:0}
-html,body{position:fixed;left:0;top:0;width:100%;height:100%;background:#264C8C;overflow:hidden;overscroll-behavior:none;touch-action:manipulation;-webkit-text-size-adjust:100%;font-family:"TAM","NSH","Noto Sans Hebrew",Arial,sans-serif}
+html,body{position:fixed;left:0;top:0;width:100%;height:100%;background:#204177;overflow:hidden;overscroll-behavior:none;touch-action:manipulation;-webkit-text-size-adjust:100%;font-family:"TAM","NSH","Noto Sans Hebrew",Arial,sans-serif}
 #stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;transform-origin:center;color:#fff;font-weight:400;letter-spacing:-0.02em;
-  background:linear-gradient(to bottom,#3261AE 0,#3261AE 28%,#305FAA 46%,#2D5AA0 58%);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  background:linear-gradient(to bottom,#2A5294 0,#2A5294 28%,#295190 46%,#264C88 58%);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 /* photos: cross-fade between slides, slow push-in; faded into the blue upwards, then tinted */
 .photo{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;
   -webkit-mask-image:linear-gradient(to bottom,transparent 0,transparent 392px,#000 880px);mask-image:linear-gradient(to bottom,transparent 0,transparent 392px,#000 880px)}
@@ -41,7 +41,7 @@ html,body{position:fixed;left:0;top:0;width:100%;height:100%;background:#264C8C;
 .ph-haifa i{background-image:url(../assets/haifa.jpg);background-position:50% 60%}
 .ph-kinneret i{background-image:url(../assets/kinneret.jpg);background-position:50% 55%}
 .ph-fields i{background-image:url(../assets/fields.jpg);background-position:50% 70%}
-#tint{position:absolute;left:0;right:0;top:380px;bottom:0;background:linear-gradient(to bottom,rgba(50,97,174,0) 0,rgba(50,97,174,.6) 22%,rgba(50,97,174,.68) 40%,rgba(50,97,174,.46) 58%,rgba(50,97,174,.16) 80%,rgba(50,97,174,0) 100%)}
+#tint{position:absolute;left:0;right:0;top:380px;bottom:0;background:linear-gradient(to bottom,rgba(42,82,148,0) 0,rgba(42,82,148,.6) 22%,rgba(42,82,148,.68) 40%,rgba(42,82,148,.46) 58%,rgba(42,82,148,.16) 80%,rgba(42,82,148,0) 100%)}
 /* contour lines: slow breathing + drift, panning between slides; mint highlight lines draw along the lower part */
 #map{position:absolute;inset:0;width:100%;height:100%}
 .pan{transition:transform 2s cubic-bezier(.5,0,.2,1)}
