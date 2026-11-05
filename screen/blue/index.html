@@ -80,12 +80,18 @@ html[data-lite="3"] .photo{display:none!important}
 .inst,.chair{font-size:53px;line-height:1.1;letter-spacing:-0.037em;margin-top:2px}
 .inst{margin-top:19px}
 .ti .chair{margin-top:30px}
-.se .chair{margin-top:20px}
-.row{display:flex;flex-direction:row;gap:40px;margin-top:76px;letter-spacing:-0.03em}
-.row div{flex:1}
-.row b{display:block;font-weight:400;font-size:42px;line-height:1.12}
-.row span{display:block;font-size:30px;line-height:1.15;margin-top:8px;color:rgba(255,255,255,.82);letter-spacing:-0.02em}
+.row{display:flex;flex-direction:row;gap:48px;width:1560px;margin-top:90px;letter-spacing:-0.03em}
+.row div{width:360px}
+.row b{display:block;font-weight:400;font-size:42px;line-height:1.15}
+.row span{display:block;font-size:28px;font-weight:400;margin-top:6px;color:rgba(255,255,255,.82);letter-spacing:-0.02em}
+.row.panel{justify-content:space-between}
+.row.panel>div{width:auto}
 .row.panel b{white-space:nowrap}
+.row.panel span{width:0;min-width:calc(100% + 150px)}
+/* session / panel slides: same layout as the original deck (vertically centred stack, 1700px wide) */
+.blk.se{top:0;right:87px;width:1700px;height:1080px;display:flex;flex-direction:column;justify-content:center}
+.se .mega{font-size:108px;line-height:1.05}
+.se .chair{font-size:36px;margin-top:26px;letter-spacing:-0.02em}
 .nb{white-space:nowrap}
 #ld{position:fixed;left:0;right:0;top:45%;text-align:center;color:rgba(255,255,255,.7);font-size:18px;pointer-events:none;z-index:5}
 #rot{display:none;position:fixed;left:0;right:0;top:14px;text-align:center;color:rgba(255,255,255,.55);font-size:14px;pointer-events:none}
