@@ -99,6 +99,14 @@ html[data-lite="3"] .photo{display:none!important}
 .se .mega{font-size:108px;line-height:1.05}
 .se .chair{font-size:36px;margin-top:26px;letter-spacing:-0.02em}
 .nb{white-space:nowrap}
+.wins{display:flex;flex-direction:row;gap:56px;width:1560px;margin-top:84px;letter-spacing:-0.03em}
+.win{flex:1;border-top:2px solid rgba(255,255,255,.38);padding-top:26px;min-width:0}
+.win .rk{display:flex;align-items:baseline;gap:22px;margin-bottom:34px}
+.win .rk i{font-style:normal;font-size:150px;line-height:.9;color:#A6DCCB;letter-spacing:-0.04em}
+.win .rk span{font-size:40px;color:#CFF4EE;letter-spacing:-0.02em}
+.win b{display:block;font-weight:700;font-size:50px;line-height:1.1}
+.win>span{display:block;font-size:32px;line-height:1.2;margin-top:12px;color:rgba(255,255,255,.85)}
+.win .ph{opacity:.55}
 #ld{position:fixed;left:0;right:0;top:45%;text-align:center;color:rgba(255,255,255,.7);font-size:18px;pointer-events:none;z-index:5}
 #rot{display:none;position:fixed;left:0;right:0;top:14px;text-align:center;color:rgba(255,255,255,.55);font-size:14px;pointer-events:none}
 @media (orientation:portrait){#rot{display:block}}
@@ -126,7 +134,8 @@ html[data-lite="3"] .photo{display:none!important}
   <div class="photo ph-kinneret" data-s="15"><i></i></div>
   <div class="photo ph-galhills" data-s="16"><i></i></div>
   <div class="photo ph-haifa" data-s="17"><i></i></div>
-  <div class="photo ph-dead" data-s="18"><i></i></div>
+  <div class="photo ph-galhills" data-s="18"><i></i></div>
+  <div class="photo ph-dead" data-s="19"><i></i></div>
   <div id="tint"></div>
   <svg id="map" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
     <defs><linearGradient id="bmg" x1="0" y1="0" x2="0" y2="1"><stop offset=".58" stop-color="#000"/><stop offset=".82" stop-color="#fff"/></linearGradient><mask id="bm" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><rect width="1920" height="1080" fill="url(#bmg)"/></mask></defs>
@@ -238,6 +247,15 @@ html[data-lite="3"] .photo{display:none!important}
     <div class="sub">ד״ר האני ברהום, מו״פ המשולש</div></div>
   </section>
   <section class="slide" data-s="18">
+    <div class="t topbar" style="--i:0"><span class="tm">15:40-16:30</span><span class="cp">הכרזה על פוסטרים זוכים</span></div>
+    <div class="t blk nm se" style="--i:1"><div class="mega">הזוכים בתחרות <b>הפוסטרים</b></div>
+    <div class="wins">
+      <div class="win"><div class="rk"><i>1</i><span>מקום ראשון</span></div><b class="ph">שם הזוכה</b><span class="ph">כותרת הפוסטר</span><span class="ph">מו״פ</span></div>
+      <div class="win"><div class="rk"><i>2</i><span>מקום שני</span></div><b class="ph">שם הזוכה</b><span class="ph">כותרת הפוסטר</span><span class="ph">מו״פ</span></div>
+      <div class="win"><div class="rk"><i>3</i><span>מקום שלישי</span></div><b class="ph">שם הזוכה</b><span class="ph">כותרת הפוסטר</span><span class="ph">מו״פ</span></div>
+    </div></div>
+  </section>
+  <section class="slide" data-s="19">
     <div class="t topbar" style="--i:0"><span class="tm">15:40-16:30</span></div>
     <div class="t blk nm" style="--i:1"><div class="mega">תודה רבה</div></div>
   </section>
@@ -250,7 +268,7 @@ const stage=document.getElementById('stage');
 const slides=[...document.querySelectorAll('.slide')],photos=[...document.querySelectorAll('.photo')];
 const hl=document.querySelector('.hl'),hl2=[...document.querySelectorAll('.hl2')],pans=[document.getElementById('pan1'),document.getElementById('pan2')];
 // small camera offsets per slide for the contour lines (px)
-const pan=[[-50, -36], [-16, 12], [17, -22], [50, 26], [-24, -7], [42, 7], [-32, -26], [1, 22], [34, -12], [-40, 36], [-7, 3], [26, -31], [-49, 17], [-15, -16], [18, 32], [51, -2], [-23, -35], [10, 13], [43, -21]];
+const pan=[[-50, -36], [-16, 12], [17, -22], [50, 26], [-24, -7], [42, 7], [-32, -26], [1, 22], [34, -12], [-40, 36], [-7, 3], [26, -31], [-49, 17], [-15, -16], [18, 32], [51, -2], [-23, -35], [10, 13], [43, -21], [-30, 20]];
 let cur=-1,auto=null;
 function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
 addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeout(fit,250));fit();
