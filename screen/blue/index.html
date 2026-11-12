@@ -99,7 +99,7 @@ html[data-lite="3"] .photo{display:none!important}
 .se .mega{font-size:108px;line-height:1.05}
 .se .chair{font-size:36px;margin-top:26px;letter-spacing:-0.02em}
 .nb{white-space:nowrap}
-.wins{display:flex;flex-direction:row;gap:56px;width:1560px;margin-top:84px;letter-spacing:-0.03em}
+.wins{display:flex;flex-direction:row;gap:48px;width:1600px;margin-top:84px;letter-spacing:-0.03em}
 .win{flex:1;border-top:2px solid rgba(255,255,255,.38);padding-top:26px;min-width:0}
 .win .rk{display:flex;align-items:baseline;gap:22px;margin-bottom:34px}
 .win .rk i{font-style:normal;font-size:150px;line-height:.9;color:#A6DCCB;letter-spacing:-0.04em}
@@ -108,6 +108,8 @@ html[data-lite="3"] .photo{display:none!important}
 .win>span{display:block;font-size:32px;line-height:1.2;margin-top:12px;color:rgba(255,255,255,.85)}
 .win .pt{font-size:29px;line-height:1.22;text-align:right;margin-top:14px;color:rgba(255,255,255,.92);text-wrap:balance}
 .win{text-shadow:0 1px 14px rgba(22,48,96,.55)}
+.win[data-o]{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.win[data-o].shown{opacity:1;transform:none}
 .win .pl{font-size:30px;margin-top:20px;color:#A6DCCB}
 #ld{position:fixed;left:0;right:0;top:45%;text-align:center;color:rgba(255,255,255,.7);font-size:18px;pointer-events:none;z-index:5}
 #rot{display:none;position:fixed;left:0;right:0;top:14px;text-align:center;color:rgba(255,255,255,.55);font-size:14px;pointer-events:none}
@@ -248,13 +250,13 @@ html[data-lite="3"] .photo{display:none!important}
     <div class="t blk tk " style="--i:1"><div class="ttl">אופטומכניקה של ספרוליטים דו-שוברים לחישה ביולוגית קוונטית כפולה של <bdi>pH</bdi> ושל שדה מגנטי</div>
     <div class="sub">ד״ר האני ברהום, מו״פ המשולש</div></div>
   </section>
-  <section class="slide" data-s="18">
+  <section class="slide" data-s="18" data-steps="3">
     <div class="t topbar" style="--i:0"><span class="tm">15:40-16:30</span><span class="cp">הכרזה על פוסטרים זוכים</span></div>
     <div class="t blk nm se" style="--i:1"><div class="mega">הזוכים בתחרות <b>הפוסטרים</b></div>
     <div class="wins">
-      <div class="win"><div class="rk"><i>1</i><span>מקום ראשון</span></div><b>Atar Cohen</b><span class="pt" dir="ltr">Watching Without Touching: Automated Monitoring of Fish Larvae at a Commercial Hatchery in Eilat</span><span class="pl">מו״פ מדבר וים המלח<br>פוסטר 43</span></div>
-      <div class="win"><div class="rk"><i>2</i><span>מקום שני</span></div><b>Hamdan Khatebb</b><span class="pt" dir="ltr">Young green quinoa as a sustainable functional crop with anti-inflammatory effects in macrophage cells</span><span class="pl">מיגל<br>פוסטר 20</span></div>
-      <div class="win"><div class="rk"><i>3</i><span>מקום שלישי</span></div><b>Jyoti Solanki</b><span class="pt" dir="ltr">Long-Term Effects of Vineyard Floor Vegetation Management on Grapevine Physiology, Yield and Wine Color Attributes</span><span class="pl">מו״פ מזרח יו״ש ובקעת הירדן<br>פוסטר 29</span></div>
+      <div class="win" data-o="3"><div class="rk"><i>1</i><span>מקום ראשון</span></div><b>Atar Cohen</b><span class="pt" dir="ltr">Watching Without Touching: Automated Monitoring of Fish Larvae at a Commercial Hatchery in Eilat</span><span class="pl">מו״פ מדבר וים המלח<br>פוסטר 43</span></div>
+      <div class="win" data-o="2"><div class="rk"><i>2</i><span>מקום שני</span></div><b>Hamdan Khatebb</b><span class="pt" dir="ltr">Young green quinoa as a sustainable functional crop with anti-inflammatory effects in macrophage cells</span><span class="pl">מיגל<br>פוסטר 20</span></div>
+      <div class="win" data-o="1"><div class="rk"><i>3</i><span>מקום שלישי</span></div><b>Jyoti Solanki</b><span class="pt" dir="ltr">Long-Term Effects of Vineyard Floor Vegetation Management on Grapevine Physiology, Yield and Wine Color Attributes</span><span class="pl">מו״פ מזרח יו״ש ובקעת הירדן<br>פוסטר 29</span></div>
     </div></div>
   </section>
   <section class="slide" data-s="19">
@@ -277,7 +279,9 @@ addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeo
 // long talk titles: shrink until the title block fits above the bottom margin (width is fixed by the logo's right edge)
 function fitTitles(){document.querySelectorAll('.one').forEach(t=>{let fs=53;t.style.fontSize=fs+'px';while(t.scrollWidth>t.parentNode.clientWidth&&fs>30){fs-=1;t.style.fontSize=fs+'px'}});document.querySelectorAll('.ttl').forEach(t=>{let fs=+t.dataset.fs||80;t.style.fontSize=fs+'px';while(t.offsetHeight>420&&fs>44){fs-=2;t.style.fontSize=fs+'px'}})}
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitTitles);fitTitles();addEventListener('load',fitTitles);
-function go(n){
+let step=0;
+function applyStep(){const s=slides[cur];if(!s)return;s.querySelectorAll('[data-o]').forEach(el=>el.classList.toggle('shown',+el.dataset.o<=step))}
+function go(n,back){
   n=(n+slides.length)%slides.length; if(n===cur)return;
   slides.forEach((s,i)=>s.classList.toggle('on',i===n));
   const pv=cur;
@@ -288,8 +292,11 @@ function go(n){
   hl.classList.remove('draw');hl2.forEach(p=>p.classList.remove('draw'));void hl.getBoundingClientRect();
   hl.classList.add('draw');hl2.forEach(p=>p.classList.add('draw'));
   cur=n;
+  step=slides[n].dataset.steps?(back?+slides[n].dataset.steps:0):0;applyStep();
 }
-const next=()=>go(cur+1),prev=()=>go(cur-1);
+// slides with data-steps reveal one [data-o] item per click (next) and hide one per back-step
+const next=()=>{const m=+slides[cur].dataset.steps||0;if(step<m){step++;applyStep()}else go(cur+1)};
+const prev=()=>{if(step>0){step--;applyStep()}else go(cur-1,true)};
 addEventListener('keydown',e=>{
   if(['ArrowLeft','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();next()}
   else if(['ArrowRight','PageUp','Backspace'].includes(e.key)){e.preventDefault();prev()}
